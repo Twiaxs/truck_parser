@@ -81,7 +81,8 @@ class GetDataParser(GetUrlsParser):
                     img = soup.find_all(attrs={'class': 'gallery-picture__image sc-lazy-image lazyload'})[index]
                     img_file = await session.get(img.get('data-src'))
                     async with aiofiles.open(f"{str(id)}/img{index}.jpg", "wb") as file:
-                        file.write(img_file)
+                        await file.write(await img_file.read())
+                        
                         
 class Json:
     def write(self):
