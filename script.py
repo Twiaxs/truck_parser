@@ -79,9 +79,11 @@ class GetDataParser(GetUrlsParser):
                     print("Такая папка создана")
                 for index in tqdm(range(1,4)):
                     img = soup.find_all(attrs={'class': 'gallery-picture__image sc-lazy-image lazyload'})[index]
+                    print(img.get('data-src'))
                     img_file = await session.get(img.get('data-src'))
                     async with aiofiles.open(f"{str(id)}/img{index}.jpg", "wb") as file:
-                        file.write(img_file)
+                        await file.write(await img_file.read())
+                        
                         
 class Json:
     def write(self):
