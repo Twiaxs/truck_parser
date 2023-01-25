@@ -1,0 +1,7 @@
+simplejson==3.17.6
+asyncio==3.4.3
+aiohttp==3.8.3 
+aiofiles==0.8.0
+tqdm==4.64.1
+beautifulsoup4==4.9.3
+fake-useragent==1.1.1
